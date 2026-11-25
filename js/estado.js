@@ -7,7 +7,7 @@ const CLAVE = 'mp_estado';
 export const VERSIONES = {
   P01: ['A', 'B'], P02: ['A', 'B'], P03: ['A', 'B'], P04: ['A', 'B'], P05: ['A', 'B'], P06: ['A', 'B'],
   P07: ['A', 'B'], P08: ['A', 'B'], P09: ['A', 'B'], P10: ['A', 'B'], P11: ['A', 'B', 'C'], P12: ['A', 'B'],
-  P13: ['A', 'B'], P14: ['A', 'B', 'C'], P16: ['A', 'B'], P17: ['A', 'B'], P18: ['A', 'B'],
+  P13: ['A', 'B'], P14: ['A', 'B', 'C'], P15: ['A', 'B'], P16: ['A', 'B'], P17: ['A', 'B'], P18: ['A', 'B'],
 };
 export const NOMBRES_P14 = { A: 'falsa', B: 'honesta', C: 'sin explicación' };
 const ALIAS_P14 = { falsa: 'A', honesta: 'B', sin: 'C', sin_explicacion: 'C' };

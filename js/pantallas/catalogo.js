@@ -1,4 +1,4 @@
-// js/pantallas/catalogo.js · P15, catálogo por página y por código. Las dos vías llegan al mismo pedido.
+// js/pantallas/catalogo.js · P15, catálogo. A: solo el buscador por nombre o página. B: por página y por código, las dos vías al mismo pedido.
 import { esc, encabezadoSesion, imagenProducto, colones, icono } from '../ui.js';
 import { track } from '../track.js';
 import { PRODUCTOS, producto, productoPorCodigo } from '../datos.js';
@@ -18,7 +18,8 @@ export default {
   id: 'P15', titulo: 'Catálogo', direccion: 'pedido.aurora/catalogo',
   dibujar(raiz, v, app, params) {
     app.asegurarSesion();
-    let via = params.via === 'codigo' ? 'codigo' : 'catalogo';
+    // Versión A: sin pestañas ni atajo por código (heurística 7, flexibilidad y eficiencia).
+    let via = v !== 'A' && params.via === 'codigo' ? 'codigo' : 'catalogo';
     let busqueda = params.buscar || '';
 
     const avisoAgregado = (p) => {
@@ -34,10 +35,10 @@ export default {
       raiz.innerHTML = `<div class="p15">${encabezadoSesion(cantidadCarrito())}
         <div class="cuerpo">
           <h1 class="titulo-seccion">Catálogo · Campaña ${app.estado.campana}</h1>
-          <div class="pestanas" role="tablist">
+          ${v === 'A' ? '' : `<div class="pestanas" role="tablist">
             <button role="tab" aria-selected="${via === 'catalogo'}" data-via="catalogo">Por página</button>
             <button role="tab" aria-selected="${via === 'codigo'}" data-via="codigo">Por código</button>
-          </div>
+          </div>`}
           ${via === 'catalogo' ? `
             <label class="buscador">${icono('buscar', 18)}<input id="buscar" type="search" placeholder="Busque por nombre o por página (ej.: página 45)" value="${esc(busqueda)}"></label>
             ${busqueda && /guardar/i.test(busqueda) ? '<p class="aviso-info">Su pedido se guarda solo cada vez que agrega un producto. Puede salir y volver cuando quiera.</p>' : ''}

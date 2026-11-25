@@ -1,4 +1,4 @@
-// js/pantallas/carrito.js · P16, «Mi pedido»: líneas, total, ganancia por escalones y pedido mínimo.
+// js/pantallas/carrito.js · P16, «Mi pedido»: líneas, total, ganancia por escalones y pedido mínimo. Quitar una línea: A sin aviso, B con «Deshacer».
 import { esc, encabezadoSesion, imagenProducto, colones, icono } from '../ui.js';
 import { REGLAS, CARRITOS_DE_MUESTRA, porcentajeGanancia, siguienteEscalon } from '../datos.js';
 import { lineasCarrito, totalCarrito, cantidadCarrito } from '../estado.js';
@@ -69,6 +69,8 @@ export default {
       quitada = { linea: { ...app.estado.carrito[i], cant: Math.max(1, app.estado.carrito[i].cant) }, i };
       app.estado.carrito.splice(i, 1);
       app.guardar(); pintar();
+      // Versión A: quita sin aviso y sin forma de recuperarlo (heurística 3, control y libertad).
+      if (v === 'A') return;
       app.aviso('Quitó un producto de Mi pedido.', { ms: 6000, accion: { texto: 'Deshacer', fn: () => { app.estado.carrito.splice(quitada.i, 0, quitada.linea); app.guardar(); if (location.hash.startsWith('#/P16')) pintar(); } } });
     };
     pintar();
