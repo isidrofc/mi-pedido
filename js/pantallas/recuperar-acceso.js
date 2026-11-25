@@ -2,7 +2,7 @@
 import { encabezadoPublico } from '../ui.js';
 
 export default {
-  id: 'P12', titulo: 'Recuperar acceso', direccion: 'mi.guaria/recuperar',
+  id: 'P12', titulo: 'Recuperar acceso', direccion: 'pedido.aurora/recuperar',
   dibujar(raiz, v, app) {
     if (v === 'A') {
       raiz.innerHTML = `<div class="p12a">${encabezadoPublico()}

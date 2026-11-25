@@ -19,7 +19,7 @@ function textoPago(p, f) {
 }
 
 export default {
-  id: 'P18', titulo: 'Pedido enviado', direccion: 'mi.guaria/mi-pedido/enviado',
+  id: 'P18', titulo: 'Pedido enviado', direccion: 'pedido.aurora/mi-pedido/enviado',
   dibujar(raiz, v, app) {
     app.asegurarSesion();
     const p = app.estado.pedidos[app.estado.pedidos.length - 1];

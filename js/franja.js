@@ -43,10 +43,10 @@ export function dibujarFranja() {
       <span class="franja-id">id actual: ${esc(idDeAhora())}</span>
       <button class="franja-boton franja-limpiar" data-franja="limpiar">Limpiar</button>
     </div>
-    <ol class="franja-lista">${abierta ? eventos.slice().reverse().map(fila).join('') : ultimo ? fila(ultimo) : '<li class="ev ev-vacio">Todavía no hay eventos. Toque algo en Mi Guaria.</li>'}</ol>`;
+    <ol class="franja-lista">${abierta ? eventos.slice().reverse().map(fila).join('') : ultimo ? fila(ultimo) : '<li class="ev ev-vacio">Todavía no hay eventos. Toque algo en Mi Pedido.</li>'}</ol>`;
 }
 
-window.addEventListener('mg:evento', (e) => {
+window.addEventListener('mp:evento', (e) => {
   eventos.push(e.detail);
   dibujarFranja();
   const el = raiz();

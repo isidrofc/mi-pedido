@@ -1,4 +1,4 @@
-// js/track.js · El único módulo que manda eventos de Mi Guaria. Todos los datos son de práctica.
+// js/track.js · El único módulo que manda eventos de Mi Pedido. Todos los datos son de práctica.
 import { config } from './config.js';
 import { cargarMixpanel } from './mixpanel-cargador.js';
 
@@ -8,9 +8,9 @@ const LISTA_ROJA = ['nombre', 'apellido', 'identificacion', 'cedula', 'telefono'
 const FORMA = /^[a-z][a-z0-9]*(_[a-z0-9]+)+$/; // objeto_accion, minúscula, sin tildes ni eñes
 const HOSTS = { us: 'https://api-js.mixpanel.com', eu: 'https://api-eu.mixpanel.com', in: 'https://api-in.mixpanel.com' };
 export const modo = config.tokenMixpanel ? 'mixpanel' : 'consola';
-const supers = { datos_de_practica: true, participante: localStorage.getItem('mg_participante') || 'sin_iniciales' };
-const nuevoAnonimo = () => { const id = 'anon-' + Math.random().toString(36).slice(2, 10); localStorage.setItem('mg_anonimo', id); return id; };
-let idActual = localStorage.getItem('mg_id_actual') || localStorage.getItem('mg_anonimo') || nuevoAnonimo();
+const supers = { datos_de_practica: true, participante: localStorage.getItem('mp_participante') || 'sin_iniciales' };
+const nuevoAnonimo = () => { const id = 'anon-' + Math.random().toString(36).slice(2, 10); localStorage.setItem('mp_anonimo', id); return id; };
+let idActual = localStorage.getItem('mp_id_actual') || localStorage.getItem('mp_anonimo') || nuevoAnonimo();
 
 if (modo === 'mixpanel') {
   cargarMixpanel();
@@ -20,7 +20,7 @@ if (modo === 'mixpanel') {
   window.mixpanel = window.mixpanel || { track: (n, p) => console.info('[mixpanel directo, sin pasar por track.js]', n, p) };
 }
 
-const mostrar = (detalle) => window.dispatchEvent(new CustomEvent('mg:evento', { detail: { hora: new Date(), modo, ...detalle } }));
+const mostrar = (detalle) => window.dispatchEvent(new CustomEvent('mp:evento', { detail: { hora: new Date(), modo, ...detalle } }));
 
 function enviar(nombre, propiedades = {}, emisor, distinctId) {
   const limpias = {}, rojas = [];
@@ -41,19 +41,19 @@ export const track = (nombre, propiedades) => enviar(nombre, propiedades, 'naveg
 export const trackServidor = (nombre, propiedades, idAnalitica) => enviar(nombre, propiedades, 'servidor', idAnalitica);
 
 export function identificar(idAnalitica) {
-  idActual = idAnalitica; localStorage.setItem('mg_id_actual', idAnalitica);
+  idActual = idAnalitica; localStorage.setItem('mp_id_actual', idAnalitica);
   if (modo === 'mixpanel') window.mixpanel.identify(idAnalitica);
   mostrar({ identidad: 'identify', distinctId: idAnalitica });
 }
 
 export function cerrarSesion() {
   if (modo === 'mixpanel') window.mixpanel.reset();
-  localStorage.removeItem('mg_id_actual'); idActual = nuevoAnonimo();
+  localStorage.removeItem('mp_id_actual'); idActual = nuevoAnonimo();
   mostrar({ identidad: 'reset', distinctId: idActual });
 }
 
 export function fijarParticipante(iniciales) {
-  supers.participante = iniciales || 'sin_iniciales'; localStorage.setItem('mg_participante', supers.participante);
+  supers.participante = iniciales || 'sin_iniciales'; localStorage.setItem('mp_participante', supers.participante);
   if (modo === 'mixpanel') window.mixpanel.register({ participante: supers.participante });
 }
 

@@ -46,7 +46,7 @@ function despuesDeGuardar(app) {
 }
 
 export default {
-  id: 'P11', titulo: 'Crear contraseña', direccion: 'mi.guaria/contrasena',
+  id: 'P11', titulo: 'Crear contraseña', direccion: 'pedido.aurora/contrasena',
   dibujar(raiz, v, app) {
     if (v === 'B') return formularioB(raiz, app, () => despuesDeGuardar(app));
     if (v === 'C') {

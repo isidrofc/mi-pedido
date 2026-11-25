@@ -26,7 +26,7 @@ export function avisoMinimo(total, v) {
 }
 
 export default {
-  id: 'P16', titulo: 'Mi pedido', direccion: 'mi.guaria/mi-pedido',
+  id: 'P16', titulo: 'Mi pedido', direccion: 'pedido.aurora/mi-pedido',
   dibujar(raiz, v, app, params) {
     app.asegurarSesion();
     if (params.muestra === 'minimo' || (app.primeraCarga && !app.estado.carrito.length)) {

@@ -28,7 +28,7 @@ function limpiarErrores(raiz) {
 }
 
 export const p02 = {
-  id: 'P02', titulo: 'Afiliación, paso 1', direccion: 'mi.guaria/afiliacion',
+  id: 'P02', titulo: 'Afiliación, paso 1', direccion: 'pedido.aurora/afiliacion',
   dibujar(raiz, v, app) {
     const f = formulario(app);
     const opciones = [
@@ -67,7 +67,7 @@ export const p02 = {
 };
 
 export const p03 = {
-  id: 'P03', titulo: 'Afiliación, paso 2', direccion: 'mi.guaria/afiliacion',
+  id: 'P03', titulo: 'Afiliación, paso 2', direccion: 'pedido.aurora/afiliacion',
   dibujar(raiz, v, app) {
     const f = formulario(app);
     const delPadron = nombreDelPadron(f.identificacion || '000000001');
@@ -99,7 +99,7 @@ export const p03 = {
 };
 
 export const p04 = {
-  id: 'P04', titulo: 'Afiliación, paso 3', direccion: 'mi.guaria/afiliacion',
+  id: 'P04', titulo: 'Afiliación, paso 3', direccion: 'pedido.aurora/afiliacion',
   dibujar(raiz, v, app) {
     const f = formulario(app);
     const provincias = Object.keys(PROVINCIAS);
@@ -138,7 +138,7 @@ export const p04 = {
 };
 
 export const p05 = {
-  id: 'P05', titulo: 'Afiliación, paso 4', direccion: 'mi.guaria/afiliacion',
+  id: 'P05', titulo: 'Afiliación, paso 4', direccion: 'pedido.aurora/afiliacion',
   dibujar(raiz, v, app) {
     const f = formulario(app);
     raiz.innerHTML = marco(v, 4, `

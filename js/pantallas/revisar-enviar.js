@@ -7,7 +7,7 @@ const SEGURO = 1500;
 const BROCHAS = 'p11';
 
 export default {
-  id: 'P17', titulo: 'Revisar y enviar', direccion: 'mi.guaria/mi-pedido/revisar',
+  id: 'P17', titulo: 'Revisar y enviar', direccion: 'pedido.aurora/mi-pedido/revisar',
   dibujar(raiz, v, app) {
     app.asegurarSesion();
     if (app.primeraCarga && !app.estado.carrito.length) { app.estado.carrito = structuredClone(CARRITOS_DE_MUESTRA.P17); app.guardar(); }

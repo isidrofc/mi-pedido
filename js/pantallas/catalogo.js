@@ -15,7 +15,7 @@ function filtrar(texto) {
 }
 
 export default {
-  id: 'P15', titulo: 'Catálogo', direccion: 'mi.guaria/catalogo',
+  id: 'P15', titulo: 'Catálogo', direccion: 'pedido.aurora/catalogo',
   dibujar(raiz, v, app, params) {
     app.asegurarSesion();
     let via = params.via === 'codigo' ? 'codigo' : 'catalogo';

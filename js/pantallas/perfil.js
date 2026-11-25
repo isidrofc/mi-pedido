@@ -3,7 +3,7 @@ import { esc, encabezadoSesion, icono } from '../ui.js';
 import { cantidadCarrito } from '../estado.js';
 
 export default {
-  id: 'P20', titulo: 'Perfil', direccion: 'mi.guaria/perfil',
+  id: 'P20', titulo: 'Perfil', direccion: 'pedido.aurora/perfil',
   dibujar(raiz, v, app) {
     const sesion = app.asegurarSesion();
     const vendedora = app.servidor.vendedora(sesion.codigo) || {};
@@ -23,7 +23,7 @@ export default {
           ${interruptor('notificaciones', 'Notificaciones en este teléfono', avisos.notificaciones)}</section>
         <section class="perfil-bloque"><h2>Pedido automático</h2>
           ${interruptor('automatico', 'Repetir mi pedido en las próximas campañas', !!app.estado.pedidoAutomatico)}</section>
-        <button class="btn-secundario ancho" id="salir">Salir de Mi Guaria</button>
+        <button class="btn-secundario ancho" id="salir">Salir de Mi Pedido</button>
         <p class="marca-practica">Datos de práctica</p>
       </div></div>`;
     raiz.querySelectorAll('[data-aviso]').forEach((c) => (c.onchange = () => {

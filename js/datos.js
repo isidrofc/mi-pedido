@@ -1,4 +1,4 @@
-// js/datos.js · Datos de práctica de Mi Guaria: productos inventados, pedidos anteriores y padrón de nombres inventados.
+// js/datos.js · Datos de práctica de Mi Pedido: productos inventados, pedidos anteriores y padrón de nombres inventados.
 
 export const REGLAS = {
   pedidoMinimo: 20000,
@@ -18,17 +18,17 @@ export function siguienteEscalon(total) {
 }
 
 export const PRODUCTOS = [
-  { id: 'p1', codigo: '10234', nombre: 'Crema de manos Guaria', precio: 6500, pagina: 12, forma: 'tubo', colores: ['#E8A3C0', '#7B3FA0'] },
+  { id: 'p1', codigo: '10234', nombre: 'Crema de manos Aurora', precio: 6500, pagina: 12, forma: 'tubo', colores: ['#E8A3C0', '#7B3FA0'] },
   { id: 'p2', codigo: '10877', nombre: 'Jabón líquido Café y Vainilla', precio: 4500, pagina: 14, forma: 'frasco', colores: ['#8C5A3C', '#E9D8C4'] },
   { id: 'p3', codigo: '10650', nombre: 'Champú Manzanilla', precio: 5000, pagina: 16, forma: 'frasco', colores: ['#F2C94C', '#2E7D4F'] },
   { id: 'p4', codigo: '11020', nombre: 'Crema facial Día', precio: 9800, pagina: 18, forma: 'barra', colores: ['#F7E1D7', '#B5246B'] },
   { id: 'p5', codigo: '20518', nombre: 'Colonia Brisa 100 ml', precio: 12000, pagina: 23, forma: 'perfume', colores: ['#9FD3E6', '#2B6E8F'] },
-  { id: 'p6', codigo: '20640', nombre: 'Perfume Noche de Guaria 50 ml', precio: 18900, pagina: 24, forma: 'perfume', colores: ['#4B2364', '#C9A227'] },
+  { id: 'p6', codigo: '20640', nombre: 'Perfume Noche de Aurora 50 ml', precio: 18900, pagina: 24, forma: 'perfume', colores: ['#4B2364', '#C9A227'] },
   { id: 'p7', codigo: '20901', nombre: 'Desodorante Volcán', precio: 3000, pagina: 27, forma: 'barra', colores: ['#D9DEE3', '#C0392B'] },
   { id: 'p8', codigo: '30127', nombre: 'Labial Orquídea', precio: 7000, pagina: 31, forma: 'labial', colores: ['#B5246B', '#3A2A40'] },
   { id: 'p9', codigo: '30455', nombre: 'Sombras Atardecer', precio: 10500, pagina: 33, forma: 'paleta', colores: ['#D9734E', '#3A2A40'] },
   { id: 'p10', codigo: '30780', nombre: 'Esmalte Guanacaste', precio: 2900, pagina: 38, forma: 'esmalte', colores: ['#C0392B', '#2C2C2C'] },
-  { id: 'p11', codigo: '40311', nombre: 'Set de brochas Guaria', precio: 7200, pagina: 45, forma: 'brochas', colores: ['#E8C9A0', '#5E2A84'] },
+  { id: 'p11', codigo: '40311', nombre: 'Set de brochas Aurora', precio: 7200, pagina: 45, forma: 'brochas', colores: ['#E8C9A0', '#5E2A84'] },
   { id: 'p12', codigo: '50102', nombre: 'Set Orquídea de regalo', precio: 14500, pagina: 52, forma: 'caja', colores: ['#7B3FA0', '#F5C542'] },
 ];
 

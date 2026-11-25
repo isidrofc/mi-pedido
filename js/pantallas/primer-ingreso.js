@@ -5,7 +5,7 @@ import { cantidadCarrito } from '../estado.js';
 import { cierre, REGLAS } from '../datos.js';
 
 const TUTORIAL = [
-  ['Bienvenida a Mi Guaria', 'Aquí arma su pedido de cada campaña, ve su ganancia y revisa sus pedidos anteriores.'],
+  ['Bienvenida a Mi Pedido', 'Aquí arma su pedido de cada campaña, ve su ganancia y revisa sus pedidos anteriores.'],
   ['Así funciona su campaña', 'Cada campaña dura tres semanas. Envíe su pedido antes del cierre para que se lo facturen a tiempo.'],
   ['Así ve su ganancia', 'Su ganancia sube por escalones: 25 %, 30 % y 35 % según el monto de su pedido.'],
 ];
@@ -15,7 +15,7 @@ const TARJETAS = [
 ];
 
 export default {
-  id: 'P13', titulo: 'Primer ingreso', direccion: 'mi.guaria/inicio',
+  id: 'P13', titulo: 'Primer ingreso', direccion: 'pedido.aurora/inicio',
   dibujar(raiz, v, app) {
     app.asegurarSesion();
     const ingreso = app.tomarIngresoPendiente();
@@ -35,7 +35,7 @@ export default {
         </div>
         <section class="primeros-pasos"><h2>Primeros pasos · ${listos} de 3 listo${listos > 1 ? 's' : ''}</h2>
           <div class="barra-avance"><span style="width:${(listos / 3) * 100}%"></span></div>
-          <ul>${paso(true, 'Entró a Mi Guaria')}${paso(pedido, `Haga su primer pedido (mínimo ${colones(REGLAS.pedidoMinimo)})`, '/P15')}${paso(contrasena, 'Cree su contraseña (opcional)', '/P11')}</ul>
+          <ul>${paso(true, 'Entró a Mi Pedido')}${paso(pedido, `Haga su primer pedido (mínimo ${colones(REGLAS.pedidoMinimo)})`, '/P15')}${paso(contrasena, 'Cree su contraseña (opcional)', '/P11')}</ul>
         </section>
       </div></div>`;
   },

@@ -1,4 +1,4 @@
-// js/ui.js · Piezas de interfaz que comparten las pantallas de Mi Guaria (datos de práctica).
+// js/ui.js · Piezas de interfaz que comparten las pantallas de Mi Pedido (datos de práctica).
 
 export function esc(texto) {
   return String(texto ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -8,17 +8,20 @@ export function colones(monto) {
   return '₡' + Math.round(monto).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 }
 
-// Logotipo propio de Cosméticos Guaria: una guaria (orquídea) dibujada con cinco figuras.
+// Logotipo propio de Cosméticos Aurora: un sol que sale sobre el horizonte, con cinco rayos y su reflejo.
 export function logo(tamano = 32, conNombre = true, claro = false) {
   const color = claro ? '#FFFFFF' : '#5E2A84';
-  return `<span class="logo" role="button" tabindex="0" aria-label="Mi Guaria">
+  const rayo = claro ? '#E9D3F5' : '#8E4DB5';
+  return `<span class="logo" role="button" tabindex="0" aria-label="Mi Pedido">
     <svg width="${tamano}" height="${tamano}" viewBox="0 0 40 40" aria-hidden="true">
-      <ellipse cx="20" cy="11" rx="5.5" ry="9" fill="${claro ? '#F3E6FA' : '#7B3FA0'}"/>
-      <ellipse cx="10.5" cy="19" rx="9" ry="5" transform="rotate(-22 10.5 19)" fill="${claro ? '#E9D3F5' : '#8E4DB5'}"/>
-      <ellipse cx="29.5" cy="19" rx="9" ry="5" transform="rotate(22 29.5 19)" fill="${claro ? '#E9D3F5' : '#8E4DB5'}"/>
-      <path d="M13 24 Q20 38 27 24 Q20 28 13 24Z" fill="${claro ? '#FFD1E6' : '#B5246B'}"/>
-      <circle cx="20" cy="22" r="2.6" fill="#F5C542"/>
-    </svg>${conNombre ? `<span class="logo-nombre" style="color:${color}">Mi Guaria</span>` : ''}</span>`;
+      <g stroke="${rayo}" stroke-width="2.6" stroke-linecap="round">
+        <path d="M20 11V7"/><path d="M10.1 15.1 7.3 12.3"/><path d="M29.9 15.1l2.8-2.8"/><path d="M6.8 20.2 3.1 18.8"/><path d="M33.2 20.2l3.7-1.4"/>
+      </g>
+      <path d="M9 25a11 11 0 0 1 22 0z" fill="${claro ? '#FFD1E6' : '#B5246B'}"/>
+      <path d="M14 25a6 6 0 0 1 12 0z" fill="#F5C542"/>
+      <rect x="4" y="26.5" width="32" height="3.4" rx="1.7" fill="${claro ? '#F3E6FA' : '#7B3FA0'}"/>
+      <rect x="11" y="32.5" width="18" height="3" rx="1.5" fill="${rayo}"/>
+    </svg>${conNombre ? `<span class="logo-nombre" style="color:${color}">Mi Pedido</span>` : ''}</span>`;
 }
 
 const ICONOS = {

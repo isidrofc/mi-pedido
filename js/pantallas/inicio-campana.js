@@ -7,7 +7,7 @@ import { cierre } from '../datos.js';
 const dos = (n) => String(n).padStart(2, '0');
 
 export default {
-  id: 'P14', titulo: 'Inicio de campaña', direccion: 'mi.guaria/campana',
+  id: 'P14', titulo: 'Inicio de campaña', direccion: 'pedido.aurora/campana',
   dibujar(raiz, v, app) {
     app.asegurarSesion();
     const ingreso = app.tomarIngresoPendiente();

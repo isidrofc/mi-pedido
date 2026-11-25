@@ -1,7 +1,7 @@
 // js/estado.js · Estado de la aplicación en este navegador: versiones, escenario, pedido, mensajes y sesión (datos de práctica).
 import { producto, totalLineas } from './datos.js';
 
-const CLAVE = 'mg_estado';
+const CLAVE = 'mp_estado';
 
 // Pantallas con más de una versión. P14: A es la cuenta regresiva falsa, B la honesta y C la que no explica nada.
 export const VERSIONES = {

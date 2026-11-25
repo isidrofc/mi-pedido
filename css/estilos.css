@@ -1,4 +1,4 @@
-/* css/estilos.css · Estilos de Mi Guaria (práctica). Diseñada para 360 px de ancho; en computadora se ve como un teléfono centrado. */
+/* css/estilos.css · Estilos de Mi Pedido (práctica). Diseñada para 360 px de ancho; en computadora se ve como un teléfono centrado. */
 
 :root {
   --morado: #5E2A84;
@@ -406,7 +406,7 @@ body:not(.sin-franja) .telefono { max-height: calc(100vh - 108px); }
 .panel button:not(.panel-cabeza button), .panel select, .panel input { min-height: 38px; padding: 6px 10px; border: 1px solid #C9C1D1; border-radius: 8px; background: #FFFFFF; font-size: 14px; }
 .panel-fila { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 6px; }
 .panel-fila button { width: 100%; }
-.panel-fila button.activo { background: var(--morado); color: #FFFFFF; border-color: var(--morado); }
+.panel .panel-fila button.activo { background: var(--morado); color: #FFFFFF; border-color: var(--morado); }
 .panel-fila button.peligro { grid-column: 1 / -1; color: var(--rojo); border-color: var(--rojo); }
 .panel section > input { width: 100%; margin-bottom: 6px; }
 .panel section > select { width: 100%; }

@@ -20,9 +20,9 @@ import { logo } from '../ui.js';
 
 // Fin del ejercicio de la sesión 1: la vendedora entró.
 const fin = {
-  id: 'fin', titulo: 'Bienvenida a Mi Guaria', direccion: 'mi.guaria/inicio',
+  id: 'fin', titulo: 'Bienvenida a Mi Pedido', direccion: 'pedido.aurora/inicio',
   dibujar(raiz, v, app) {
-    raiz.innerHTML = `<div class="fin"><div class="fin-centro">${logo(64, false)}<h1>Bienvenida a Mi Guaria</h1>
+    raiz.innerHTML = `<div class="fin"><div class="fin-centro">${logo(64, false)}<h1>Bienvenida a Mi Pedido</h1>
       <p>Ya entró con su código de vendedora.</p><p class="marca-practica">Fin del ejercicio de práctica de la sesión 1.</p></div></div>`;
     app.etiqueta('P10 · fin del ejercicio');
   },

@@ -1,8 +1,8 @@
-// js/servidor-simulado.js · Hace de servidor de Mi Guaria, que no tiene uno. Los eventos con emisor «servidor» salen de aquí.
+// js/servidor-simulado.js · Hace de servidor de Mi Pedido, que no tiene uno. Los eventos con emisor «servidor» salen de aquí.
 // Guarda en localStorage, como si fuera la base de datos, a cada vendedora de práctica con su id_analitica.
 import { trackServidor } from './track.js';
 
-const CLAVE = 'mg_bd';
+const CLAVE = 'mp_bd';
 const CODIGO_SMS = '482913'; // código de verificación de práctica
 
 function base() {
@@ -11,7 +11,7 @@ function base() {
     solicitudes: [],
     // Vendedoras migradas de la aplicación vieja (sesiones 1 y 4). Ya estaban nombradas antes de la práctica.
     vendedoras: {
-      'V-00042': { id_analitica: 'va_k3m9q2', zona: 'Z07', campana_nombramiento: 1, puerta_entrada: 'migracion', condicion_venta: 'contado', contrasena: 'Gu4ria*26', accesoCreado: false, pedidos: 2, intentos: 1, variante: 'a_correo_contrasena', historial: true },
+      'V-00042': { id_analitica: 'va_k3m9q2', zona: 'Z07', campana_nombramiento: 1, puerta_entrada: 'migracion', condicion_venta: 'contado', contrasena: 'Aur0ra*26', accesoCreado: false, pedidos: 2, intentos: 1, variante: 'a_correo_contrasena', historial: true },
       'V-05012': { id_analitica: 'va_p8t4w1', zona: 'Z12', campana_nombramiento: 6, puerta_entrada: 'lider_zona', condicion_venta: 'credito', contrasena: 'Rk7#qP2m', accesoCreado: false, pedidos: 0, intentos: 1, variante: 'a_correo_contrasena', historial: false },
     },
     codigo: null, // { vendedora, vence, intentos }
@@ -44,7 +44,7 @@ export function aprobarSolicitud({ puerta = 'lider_zona', campana = 7, variante 
   if (!solicitud) { solicitud = { estado: 'pendiente', condicion_venta: 'contado', tieneCorreo: true, puerta_entrada: puerta }; bd.solicitudes.push(solicitud); }
   solicitud.estado = 'aprobada';
   const codigo = 'V-' + String(bd.siguiente++).padStart(5, '0');
-  const v = { id_analitica: nuevoId(), zona: 'Z07', campana_nombramiento: campana, puerta_entrada: solicitud.puerta_entrada, condicion_venta: solicitud.condicion_venta, contrasena: variante === 'a_correo_contrasena' ? 'Gu4r!a-7Kp' : null, accesoCreado: false, pedidos: 0, intentos: 0, variante, historial: false };
+  const v = { id_analitica: nuevoId(), zona: 'Z07', campana_nombramiento: campana, puerta_entrada: solicitud.puerta_entrada, condicion_venta: solicitud.condicion_venta, contrasena: variante === 'a_correo_contrasena' ? 'Aur0r!a-7Kp' : null, accesoCreado: false, pedidos: 0, intentos: 0, variante, historial: false };
   bd.vendedoras[codigo] = v;
   guardar();
   trackServidor('vendedora_nombrada', { puerta_entrada: v.puerta_entrada, zona: v.zona, campana, condicion_venta: v.condicion_venta }, v.id_analitica);
@@ -56,7 +56,7 @@ export function enviarBienvenida(codigo, canal) {
   const v = vendedora(codigo);
   if (!v) return null;
   v.intentos = Math.min((v.intentos || 0) + 1, 3);
-  if (canal === 'correo' && !v.contrasena) v.contrasena = 'Gu4r!a-7Kp'; // contraseña temporal de práctica
+  if (canal === 'correo' && !v.contrasena) v.contrasena = 'Aur0r!a-7Kp'; // contraseña temporal de práctica
   guardar();
   trackServidor('invitacion_enviada', { canal, intento: v.intentos, variante_activacion: v.variante }, v.id_analitica);
   return { intento: v.intentos, token: v.id_analitica.slice(3) + v.intentos };

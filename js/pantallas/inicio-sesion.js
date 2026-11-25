@@ -15,7 +15,7 @@ function promo() {
 }
 
 export default {
-  id: 'P09', titulo: 'Inicio de sesión', direccion: 'mi.guaria/entrar',
+  id: 'P09', titulo: 'Inicio de sesión', direccion: 'pedido.aurora/entrar',
   dibujar(raiz, v, app, params) {
     // P09 se abrió desde el enlace del mensaje de bienvenida.
     let enlaceVencido = false;
@@ -27,7 +27,7 @@ export default {
     const vencido = enlaceVencido ? `<div class="banda-error">El enlace de su mensaje de bienvenida venció. Pida uno nuevo abajo, en ${v === 'A' ? '«' + esc(textoAyudaA(app)) + '»' : '«No tengo mi código de vendedora»'}.</div>` : '';
     if (v === 'A') {
       raiz.innerHTML = `<div class="p09a">
-        <div class="p09a-portada">${promo()}<div class="p09a-marca">${logo(30, false, true)}<span>Mi Guaria</span></div></div>
+        <div class="p09a-portada">${promo()}<div class="p09a-marca">${logo(30, false, true)}<span>Mi Pedido</span></div></div>
         <div class="banda-error" id="error" hidden>Error de verificación</div>${vencido}
         <form class="af-form p09a-form" novalidate>
           <div class="campo"><label for="usuario">Usuario</label><input id="usuario" autocomplete="username" autocapitalize="off"></div>
@@ -38,7 +38,7 @@ export default {
     } else {
       raiz.innerHTML = `<div class="p09b">
         <header class="enc-publico">${logo(28)}</header>${vencido}
-        <div class="af-cuerpo"><h1 class="af-titulo">Entrar a Mi Guaria</h1>
+        <div class="af-cuerpo"><h1 class="af-titulo">Entrar a Mi Pedido</h1>
         <form class="af-form" novalidate>
           <div class="campo"><label for="codigo">Código de vendedora</label>
             <input id="codigo" autocomplete="username" autocapitalize="characters" placeholder="V-00042">

@@ -18,7 +18,7 @@ function seguir(app, ingreso, v) {
 }
 
 export default {
-  id: 'P10', titulo: 'Código de verificación', direccion: 'mi.guaria/entrar/codigo',
+  id: 'P10', titulo: 'Código de verificación', direccion: 'pedido.aurora/entrar/codigo',
   dibujar(raiz, v, app) {
     const ingreso = ingresoEnCurso(app);
     const creaAcceso = !(v === 'A' && app.estado.escenario !== '1' && app.version('P11') !== 'C');
@@ -41,7 +41,7 @@ function versionA(raiz, app, ingreso, creaAcceso) {
       <div class="p10a-vencido" hidden><p class="banda-error en-linea">Código vencido</p><button class="btn-principal ancho" id="volver">Volver al inicio</button></div>
     </div></div>`;
   // El aviso del mensaje de texto dura cinco segundos y no queda guardado en el teléfono.
-  app.despues(700, () => app.notificar({ app: 'Mensajes', de: 'Mi Guaria', texto: `Mi Guaria: su código es ${codigoSms}`, ms: 5000 }));
+  app.despues(700, () => app.notificar({ app: 'Mensajes', de: 'Mi Pedido', texto: `Mi Pedido: su código es ${codigoSms}`, ms: 5000 }));
   const casillas = [...raiz.querySelectorAll('.casilla')];
   casillas.forEach((c, i) => {
     c.addEventListener('paste', (e) => e.preventDefault());
@@ -68,7 +68,7 @@ function versionA(raiz, app, ingreso, creaAcceso) {
 function versionB(raiz, app, ingreso, creaAcceso) {
   const mandar = () => {
     const codigoSms = app.servidor.enviarCodigo(ingreso.codigo, 600);
-    app.despues(800, () => app.agregarMensaje({ app: 'sms', hilo: 'miguaria', de: 'Mi Guaria', clase: 'codigo', cuerpo: `Mi Guaria: su código es ${codigoSms}. Sirve por 10 minutos.\n\n@mi.guaria #${codigoSms}` }));
+    app.despues(800, () => app.agregarMensaje({ app: 'sms', hilo: 'mipedido', de: 'Mi Pedido', clase: 'codigo', cuerpo: `Mi Pedido: su código es ${codigoSms}. Sirve por 10 minutos.\n\n@pedido.aurora #${codigoSms}` }));
     return codigoSms;
   };
   const codigoSms = mandar();

@@ -5,7 +5,7 @@ import { HISTORIAL, producto, totalLineas } from '../datos.js';
 import { agregarAlCarrito, cantidadCarrito } from '../estado.js';
 
 export default {
-  id: 'P19', titulo: 'Mis pedidos', direccion: 'mi.guaria/mis-pedidos',
+  id: 'P19', titulo: 'Mis pedidos', direccion: 'pedido.aurora/mis-pedidos',
   dibujar(raiz, v, app) {
     const sesion = app.asegurarSesion();
     const conHistorial = sesion.muestra || app.servidor.vendedora(sesion.codigo)?.historial;

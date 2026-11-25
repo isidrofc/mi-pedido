@@ -1,4 +1,4 @@
-// js/app.js · Arranque de Mi Guaria: teléfono simulado, rutas, avisos, mensajes y panel de quien presenta (datos de práctica).
+// js/app.js · Arranque de Mi Pedido: teléfono simulado, rutas, avisos, mensajes y panel de quien presenta (datos de práctica).
 import { estado, guardar, version, fijarVersion, aplicarParametros, busquedaActual, reiniciarRecorrido, VERSIONES, NOMBRES_P14, cantidadCarrito } from './estado.js';
 import * as servidor from './servidor-simulado.js';
 import { track, identificar, cerrarSesion, fijarParticipante, modo } from './track.js';
@@ -58,7 +58,7 @@ export const app = {
   permiso({ texto, iconoNombre = 'ubicacion', alResponder }) {
     const capa = $('#capa');
     capa.innerHTML = `<div class="permiso" role="dialog" aria-label="Permiso del navegador">
-      <div class="permiso-origen">${icono(iconoNombre, 18)} <b>mi.guaria</b> quiere</div>
+      <div class="permiso-origen">${icono(iconoNombre, 18)} <b>pedido.aurora</b> quiere</div>
       <div class="permiso-texto">${esc(texto)}</div>
       <div class="permiso-botones"><button data-r="bloquear">Bloquear</button><button data-r="permitir">Permitir</button></div>
       <div class="permiso-nota">Ventana simulada para la práctica. No se usa la ubicación real.</div></div>`;
@@ -155,15 +155,15 @@ function contenidoBienvenida(codigo, canal, intento, token) {
   const ruta = `/P09?utm_source=${canal}&utm_campaign=bienvenida&intento=${intento}&t=${token}`;
   const s = estado.escenario;
   if (canal === 'correo') {
-    const base = { app: 'correo', de: 'Mi Guaria', remitente: 'avisos@mi.guaria (práctica)', enlace: { texto: 'Ingresar', ruta } };
-    if (s === '1') return { ...base, asunto: 'Bienvenida a Cosméticos Guaria', cuerpo: `Estimada vendedora: su solicitud fue aprobada. Su código de vendedora es ${codigo} y su contraseña temporal es ${v.contrasena}. Ingrese en Mi Guaria con estos datos. Este mensaje se generó automáticamente, no lo responda.`, boton: 'Ir a Mi Guaria' };
-    if (s === '4') return { ...base, asunto: 'Bienvenida a Mi Guaria: sus datos para entrar', cuerpo: `Usted ya es vendedora de Cosméticos Guaria. Su usuario es su código de vendedora: ${codigo}. Su contraseña temporal es: ${v.contrasena}. Entre en miguaria {enlace} y cambie la contraseña en las próximas 48 horas. Si no la cambia, el enlace vence`, enlace: { texto: '(enlace)', ruta } };
-    return { ...base, asunto: 'Bienvenida a Mi Guaria', cuerpo: `Su usuario: ${codigo}. Su contraseña temporal: ${v.contrasena}. Vence en 24 horas.`, boton: 'Ingresar' };
+    const base = { app: 'correo', de: 'Mi Pedido', remitente: 'avisos@pedido.aurora (práctica)', enlace: { texto: 'Ingresar', ruta } };
+    if (s === '1') return { ...base, asunto: 'Bienvenida a Cosméticos Aurora', cuerpo: `Estimada vendedora: su solicitud fue aprobada. Su código de vendedora es ${codigo} y su contraseña temporal es ${v.contrasena}. Ingrese en Mi Pedido con estos datos. Este mensaje se generó automáticamente, no lo responda.`, boton: 'Ir a Mi Pedido' };
+    if (s === '4') return { ...base, asunto: 'Bienvenida a Mi Pedido: sus datos para entrar', cuerpo: `Usted ya es vendedora de Cosméticos Aurora. Su usuario es su código de vendedora: ${codigo}. Su contraseña temporal es: ${v.contrasena}. Entre en mipedido {enlace} y cambie la contraseña en las próximas 48 horas. Si no la cambia, el enlace vence`, enlace: { texto: '(enlace)', ruta } };
+    return { ...base, asunto: 'Bienvenida a Mi Pedido', cuerpo: `Su usuario: ${codigo}. Su contraseña temporal: ${v.contrasena}. Vence en 24 horas.`, boton: 'Ingresar' };
   }
-  if (canal === 'whatsapp') return { app: 'whatsapp', hilo: 'whatsapp', de: 'Mi Guaria (WhatsApp)', cuerpo: `Mi Guaria: estos son sus datos para entrar. Su código de vendedora es ${codigo}. Entre aquí: {enlace}`, enlace: { texto: 'mi.guaria/entrar', ruta } };
-  const sms = { app: 'sms', hilo: 'miguaria', de: 'Mi Guaria', enlace: { texto: 'mi.guaria/entrar', ruta } };
-  if (s === '4') return { ...sms, cuerpo: `Mi Guaria: bienvenida. Su código de vendedora es ${codigo}. Toque este enlace para activar su cuenta {enlace}. Al abrirlo le mandamos un código de 6 números a este teléfono`, enlace: { texto: '(enlace)', ruta } };
-  return { ...sms, cuerpo: `Mi Guaria: bienvenida. Su código de vendedora es ${codigo}. Entre aquí: {enlace}` };
+  if (canal === 'whatsapp') return { app: 'whatsapp', hilo: 'whatsapp', de: 'Mi Pedido (WhatsApp)', cuerpo: `Mi Pedido: estos son sus datos para entrar. Su código de vendedora es ${codigo}. Entre aquí: {enlace}`, enlace: { texto: 'pedido.aurora/entrar', ruta } };
+  const sms = { app: 'sms', hilo: 'mipedido', de: 'Mi Pedido', enlace: { texto: 'pedido.aurora/entrar', ruta } };
+  if (s === '4') return { ...sms, cuerpo: `Mi Pedido: bienvenida. Su código de vendedora es ${codigo}. Toque este enlace para activar su cuenta {enlace}. Al abrirlo le mandamos un código de 6 números a este teléfono`, enlace: { texto: '(enlace)', ruta } };
+  return { ...sms, cuerpo: `Mi Pedido: bienvenida. Su código de vendedora es ${codigo}. Entre aquí: {enlace}` };
 }
 
 // Sesiones 1 y 4: la vendedora ya estaba nombrada, así que el mensaje de bienvenida está en el teléfono desde el arranque.
@@ -214,7 +214,7 @@ function render() {
   pantalla.dibujar(raiz, v, app, params, partes.slice(1));
   pintarEtiqueta();
   primeraCarga = false;
-  document.title = `${pantalla.titulo || 'Mi Guaria'} · Mi Guaria (práctica)`;
+  document.title = `${pantalla.titulo || 'Mi Pedido'} · Mi Pedido (práctica)`;
 }
 
 // ---------- Menú de las pantallas con sesión ----------
@@ -245,7 +245,7 @@ function abrirPanel() {
     <div class="panel-cabeza"><b>Panel de quien presenta</b><button data-panel="cerrar" aria-label="Cerrar">×</button></div>
     <p class="panel-nota">Datos de práctica. Este panel cambia solo este navegador o este celular.</p>
     <section><h3>Iniciales de la pareja</h3>
-      <input id="panel-iniciales" maxlength="8" placeholder="Ej.: RR-JR" value="${esc(localStorage.getItem('mg_participante') === 'sin_iniciales' ? '' : localStorage.getItem('mg_participante') || '')}">
+      <input id="panel-iniciales" maxlength="8" placeholder="Ej.: RR-JR" value="${esc(localStorage.getItem('mp_participante') === 'sin_iniciales' ? '' : localStorage.getItem('mp_participante') || '')}">
       <button data-panel="iniciales">Guardar iniciales</button></section>
     <section><h3>Versiones</h3>
       <div class="panel-fila"><button data-global="A" class="${estado.global === 'A' ? 'activo' : ''}">Versión A</button><button data-global="B" class="${estado.global === 'B' ? 'activo' : ''}">Versión B</button></div>
@@ -376,4 +376,4 @@ asegurarArranque();
 prepararLogo();
 aplicarFranja();
 render();
-window.MiGuaria = { app, estado, servidor, abrirPanel, accionPanel, cantidadCarrito };
+window.MiPedido = { app, estado, servidor, abrirPanel, accionPanel, cantidadCarrito };
